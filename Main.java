@@ -25,21 +25,17 @@ public class Main {
                 .ifPresent(r-> System.out.println("Suma Total: "+r));
 
         //Obtener el número racional mayor
-        rationals.stream()
-                .max(Comparator.comparing(Rational::toString))
-                .ifPresent(r-> System.out.println("El mayor es: "+r));
-
+        System.out.println("El mayor es: "+rationals.stream()
+                .reduce(unMedio, Rational::getGreater));
         //Sumar todos numeradores y obtener los siguientes datos: número de elementos, la suma de los numeradores, el numerador menor, el mayor y el promedio
 
         //Sumar todos numeradores
-        System.out.println("Suma total los numeradores: "+rationals.stream()
+        System.out.println("Suma total de los numeradores: "+rationals.stream()
                 .mapToInt(r-> r.getNumerator())
                 .sum());
 
         // número de elementos
-        System.out.println("Numero de elementos: "+rationals.stream()
-                .mapToInt(r-> r.getNumerator())
-                .count());
+        System.out.println("Numero de elementos: "+rationals.size());
 
         // el numerador menor,
         rationals.stream()
